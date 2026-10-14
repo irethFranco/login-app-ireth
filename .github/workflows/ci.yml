@@ -1,0 +1,24 @@
+name: Validar login-app
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos del proyecto
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          echo "Proyecto validado correctamente"  
